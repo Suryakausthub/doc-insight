@@ -1,0 +1,28 @@
+services:
+  api:
+    build: ./server
+    env_file: ./server/.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./server/uploads:/app/uploads   # persist uploaded PDFs
+      # (Optional) persist sqlite for dev:
+      - ./server/docinsight.db:/app/docinsight.db
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./web
+      args:
+        # Optional: if you want Vite to bake this at build time:
+        # VITE_API_URL will be inlined into the bundle during `npm run build`
+        # You can also set this via an .env file, but args are simple here.
+        VITE_API_URL: http://localhost:8000  
+    environment:
+      # Safety net: some setups pass env to build step; Vite reads at build time
+      - VITE_API_URL=http://localhost:8000  
+    ports:
+      - "5173:80"
+    depends_on:
+      - api
+    restart: unless-stopped
