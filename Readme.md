@@ -66,36 +66,41 @@ python -m uvicorn app:app --reload
 ---
 
 ## 💻 Frontend Setup (Local)
-
+```
 cd web
 npm install
-
+```
 # Set backend URL during local dev
+```
 echo VITE_API_URL=http://127.0.0.1:8000 > .env
 
 npm run dev
+```
 # Frontend → http://localhost:5173
 
 ---
 ## 🐳 Docker Setup (Recommended)
 
 From the project root:
+```
 docker compose build
 docker compose up -d
-
+```
+```
 Frontend → http://localhost:5173
 Backend → http://localhost:8000/docs
-
+```
 To rebuild frontend (after code/env changes):
+```
 docker compose build web --no-cache
 docker compose up -d
-
+```
 
 ## 📡 API Endpoints
 1. POST /upload-resume
 Upload a PDF file.
 Response (AI success):
-
+```
 {
   "id": "uuid",
   "filename": "resume.pdf",
@@ -103,9 +108,9 @@ Response (AI success):
   "summary": "Concise AI summary text",
   "top_words": null
 }
-
+```
 Response (AI fails):
-
+```
 {
   "id": "uuid",
   "filename": "resume.pdf",
@@ -113,10 +118,10 @@ Response (AI fails):
   "summary": null,
   "top_words": [["python", 12], ["java", 8], ...]
 }
-
+```
 2. GET /history
 List of previous uploads:
-
+```
 [
   {
     "id": "uuid",
@@ -125,10 +130,10 @@ List of previous uploads:
     "summary_type": "ai"
   }
 ]
-
+```
 3. GET /insights?id=<uuid>
 Fetch a specific upload’s details:
-
+```
 {
   "id": "uuid",
   "filename": "resume.pdf",
@@ -136,29 +141,32 @@ Fetch a specific upload’s details:
   "summary": "Concise AI summary text",
   "top_words": null
 }
-
+```
 
 ## 🔑 Environment Variables
+```
 Backend (server/.env)
 SARVAM_API_KEY=your_api_key_here
 SARVAM_API_URL=https://api.sarvam.ai/v1/chat/completions
 SUMMARY_MODEL=sarvam-m
 MAX_PDF_SIZE_MB=10
-
+```
+```
 Frontend (web/.env during local dev)
 VITE_API_URL=http://127.0.0.1:8000
-
+```
 
 ## 🚀 Future Improvements
-
+```
 OCR support for scanned PDFs.
 Better visualization of summaries.
 User accounts & authentication.
 PostgreSQL instead of SQLite for multi-user setup.
 Metrics & health-check endpoints.
-
+```
 ## 📚 References
-
+```
 FastAPI Documentation
 React Documentation
 Sarvam AI
+```
