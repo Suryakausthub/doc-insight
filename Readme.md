@@ -45,6 +45,7 @@ doc-insight/
 
 ## ⚙️ Backend Setup (Local)
 
+```bash
 cd server
 python -m venv .venv
 
