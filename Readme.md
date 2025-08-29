@@ -45,7 +45,7 @@ doc-insight/
 
 ## ⚙️ Backend Setup (Local)
 
-```bash
+```
 cd server
 python -m venv .venv
 
@@ -62,8 +62,10 @@ copy .env.example .env
 python -m uvicorn app:app --reload
 # API docs → http://127.0.0.1:8000/docs
 
+```
+---
 
-💻 Frontend Setup (Local)
+## 💻 Frontend Setup (Local)
 
 cd web
 npm install
@@ -74,7 +76,8 @@ echo VITE_API_URL=http://127.0.0.1:8000 > .env
 npm run dev
 # Frontend → http://localhost:5173
 
-🐳 Docker Setup (Recommended)
+---
+## 🐳 Docker Setup (Recommended)
 
 From the project root:
 docker compose build
@@ -88,7 +91,7 @@ docker compose build web --no-cache
 docker compose up -d
 
 
-📡 API Endpoints
+## 📡 API Endpoints
 1. POST /upload-resume
 Upload a PDF file.
 Response (AI success):
@@ -135,7 +138,7 @@ Fetch a specific upload’s details:
 }
 
 
-🔑 Environment Variables
+## 🔑 Environment Variables
 Backend (server/.env)
 SARVAM_API_KEY=your_api_key_here
 SARVAM_API_URL=https://api.sarvam.ai/v1/chat/completions
@@ -146,7 +149,7 @@ Frontend (web/.env during local dev)
 VITE_API_URL=http://127.0.0.1:8000
 
 
-🚀 Future Improvements
+## 🚀 Future Improvements
 
 OCR support for scanned PDFs.
 Better visualization of summaries.
@@ -154,7 +157,7 @@ User accounts & authentication.
 PostgreSQL instead of SQLite for multi-user setup.
 Metrics & health-check endpoints.
 
-📚 References
+## 📚 References
 
 FastAPI Documentation
 React Documentation
