@@ -17,7 +17,7 @@ If the AI service (Sarvam AI) is unavailable, the app falls back to extracting t
 ---
 
 ## 📂 Project Structure
-
+```
 doc-insight/
 ├─ server/ # FastAPI backend
 │ ├─ app.py # Main application
@@ -39,7 +39,7 @@ doc-insight/
 ├─ docker-compose.yml
 ├─ .gitignore
 └─ README.md
-
+```
 
 ---
 
@@ -70,7 +70,7 @@ python -m uvicorn app:app --reload
 cd web
 npm install
 ```
-# Set backend URL during local dev
+## Set backend URL during local dev
 ```
 echo VITE_API_URL=http://127.0.0.1:8000 > .env
 
